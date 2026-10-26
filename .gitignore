@@ -1,0 +1,19 @@
+
+# Terraform local state
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Local configuration
+terraform.tfvars
+*.auto.tfvars
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Credentials and secrets
+*.json
+*.pem
+*.key
+.env
