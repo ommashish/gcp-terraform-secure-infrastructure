@@ -69,3 +69,16 @@ resource "google_storage_bucket" "secure_bucket" {
     enabled = true
   }
 }
+
+resource "google_service_account" "app_sa" {
+  account_id   = "secure-lab-app"
+  display_name = "Secure Lab Application"
+  description  = "Dedicated identity for the secure infrastructure lab"
+}
+
+
+resource "google_storage_bucket_iam_member" "app_reader" {
+  bucket = google_storage_bucket.secure_bucket.name
+  role   = "roles/storage.objectViewer"
+  member = "serviceAccount:${google_service_account.app_sa.email}"
+}
